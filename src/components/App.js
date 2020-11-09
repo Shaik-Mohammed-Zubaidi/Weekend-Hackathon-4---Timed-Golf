@@ -4,7 +4,7 @@ class Timer extends Component {
   constructor(props) {
     super(props);
     this.tid = 0;
-    this.state = { time: 0, x: 0, y: 0, gameStarted: false };
+    this.state = { time: 0, x: 0, y: 0 };
     this.moveTheBall = this.moveTheBall.bind(this);
     this.startGame = this.startGame.bind(this);
   }
@@ -40,7 +40,6 @@ class Timer extends Component {
       let t = this.state.time;
       this.setState({ time: t + 1 });
     }, 1000);
-    this.setState({ gameStarted: true });
     document.addEventListener("keydown", this.moveTheBall, false);
   }
 
