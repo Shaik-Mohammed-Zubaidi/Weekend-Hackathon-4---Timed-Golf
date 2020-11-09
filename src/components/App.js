@@ -56,7 +56,6 @@ class Timer extends Component {
         <button
           className="start"
           onClick={this.startGame}
-          disabled={this.state.gameStarted}
         >
           Start
         </button>
