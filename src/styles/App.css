@@ -17,9 +17,14 @@
   width: 195px;
   margin: 15px;
   height: 60px;
-
 }
 
+.start {
+  font-size: 20px;
+  position: absolute;
+  top: 100px;
+  left: 200px;
+}
 
 .ball {
   background-color: black;
@@ -31,7 +36,6 @@
   width: 50px;
   border-radius: 25px;
 }
-
 
 .hole {
   background-color: rgb(62, 85, 107);
