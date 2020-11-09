@@ -5,6 +5,8 @@ class Timer extends Component {
     super(props);
     this.tid = 0;
     this.state = { time: 0, x: 0, y: 0, gameStarted: false };
+    this.moveTheBall= this.moveTheBall.bind(this);
+    this.startGame= this.startGame.bind(this);
   }
   componentDidMount() {
     document.getElementById("ball").style = {
@@ -22,7 +24,7 @@ class Timer extends Component {
   componentWillUnmount() {
     clearInterval(this.tid);
   }
-  moveTheBall = (event) => {
+  moveTheBall(event) {
     if (event.key === "ArrowDown" || event.keyCode === 40) {
       this.setState({ y: this.state.y + 5 });
     } else if (event.key === "ArrowUp" || event.keyCode === 38) {
@@ -32,15 +34,15 @@ class Timer extends Component {
     } else if (event.key === "ArrowLeft" || event.keyCode === 37) {
       this.setState({ x: this.state.x - 5 });
     }
-  };
-  startGame = () => {
+  }
+  startGame() {
     this.tid = setInterval(() => {
       let t = this.state.time;
       this.setState({ time: t + 1 });
     }, 1000);
     this.setState({ gameStarted: true });
     document.addEventListener("keydown", this.moveTheBall, false);
-  };
+  }
 
   render() {
     return (
