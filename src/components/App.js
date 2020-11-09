@@ -5,11 +5,11 @@ class Timer extends Component {
     super(props);
     this.tid = 0;
     this.state = { time: 0, x: 0, y: 0, gameStarted: false };
-    this.moveTheBall= this.moveTheBall.bind(this);
-    this.startGame= this.startGame.bind(this);
+    this.moveTheBall = this.moveTheBall.bind(this);
+    this.startGame = this.startGame.bind(this);
   }
   componentDidMount() {
-    document.getElementById("ball").style = {
+    document.getElementsByClassName("ball")[0].style = {
       left: this.state.x + "px",
       top: this.state.y + "px"
     };
@@ -49,7 +49,6 @@ class Timer extends Component {
       <>
         <div
           className="ball"
-          id="ball"
           style={{ left: this.state.x + "px", top: this.state.y + "px" }}
         ></div>
         <div className="hole"></div>
