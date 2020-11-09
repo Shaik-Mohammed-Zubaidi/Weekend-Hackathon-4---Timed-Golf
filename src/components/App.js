@@ -9,6 +9,9 @@ class Timer extends Component {
     this.startGame = this.startGame.bind(this);
   }
   componentDidMount() {
+    document
+      .getElementsByClassName("start")[0]
+      .addEventListener("click", this.startGame);
     document.getElementsByClassName("ball")[0].style = {
       left: this.state.x + "px",
       top: this.state.y + "px"
@@ -52,9 +55,7 @@ class Timer extends Component {
         ></div>
         <div className="hole"></div>
         <div className="heading-timer">{this.state.time}</div>
-        <button className="start" onClick={this.startGame}>
-          Start
-        </button>
+        <button className="start">Start</button>
       </>
     );
   }
