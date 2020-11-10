@@ -27,6 +27,19 @@ class Timer extends Component {
   componentWillUnmount() {
     clearInterval(this.tid);
   }
+  renderComps() {
+    return (
+      <>
+        <div
+          className="ball"
+          style={{ left: this.state.x + "px", top: this.state.y + "px" }}
+        ></div>
+        <div className="hole"></div>
+        <div className="heading-timer">{this.state.time}</div>
+        <button className="start">Start</button>
+      </>
+    );
+  }
   moveTheBall(event) {
     if (event.key === "ArrowDown" || event.keyCode === 40) {
       this.setState({ y: this.state.y + 5 });
@@ -47,17 +60,7 @@ class Timer extends Component {
   }
 
   render() {
-    return (
-      <>
-        <div
-          className="ball"
-          style={{ left: this.state.x + "px", top: this.state.y + "px" }}
-        ></div>
-        <div className="hole"></div>
-        <div className="heading-timer">{this.state.time}</div>
-        <button className="start">Start</button>
-      </>
-    );
+    return <div>{this.renderComps()}</div>;
   }
 }
 
