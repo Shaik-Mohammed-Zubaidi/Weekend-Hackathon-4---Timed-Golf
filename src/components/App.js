@@ -9,11 +9,7 @@ class Timer extends Component {
     this.startGame = this.startGame.bind(this);
   }
   componentDidMount() {
-    let ballPosition = {
-      left: this.state.x + "px",
-      top: this.state.y + "px"
-    };
-    document.getElementsByClassName("ball")[0].style = ballPosition;
+    document.addEventListener("keydown", this.moveTheBall, false);
   }
   componentDidUpdate() {
     if (this.state.x === 250 && this.state.y === 250) {
@@ -27,6 +23,9 @@ class Timer extends Component {
     clearInterval(this.tid);
   }
   moveTheBall(event) {
+    if (this.state.time === 0) {
+      return;
+    }
     if (event.key === "ArrowDown" || event.keyCode === 40) {
       this.setState({ y: this.state.y + 5 });
     } else if (event.key === "ArrowUp" || event.keyCode === 38) {
@@ -42,20 +41,19 @@ class Timer extends Component {
       let t = this.state.time;
       this.setState({ time: t + 1 });
     }, 1000);
-    document.addEventListener("keydown", this.moveTheBall, false);
   }
 
   render() {
     let ballPosition = { left: this.state.x + "px", top: this.state.y + "px" };
     return (
-      <div>
+      <>
         <div className="ball" style={ballPosition}></div>
         <button className="start" onClick={this.startGame}>
           Start
         </button>
         <div className="hole"></div>
         <div className="heading-timer">{this.state.time}</div>
-      </div>
+      </>
     );
   }
 }
