@@ -52,7 +52,7 @@ class Timer extends Component {
         ></div>
         <div className="hole"></div>
         <div className="heading-timer">{this.state.time}</div>
-        <button className="start" onClick={this.startGame()}>
+        <button className="start" onClick={this.startGame}>
           Start
         </button>
       </div>
@@ -61,4 +61,3 @@ class Timer extends Component {
 }
 
 export default Timer;
-0;
