@@ -4,7 +4,7 @@ class Timer extends Component {
   constructor(props) {
     super(props);
     this.tid = 0;
-    this.state = { time: 0, x: 0, y: 0 };
+    this.state = { time: 0, x: 0, y: 0, isStarted: false };
     this.moveTheBall = this.moveTheBall.bind(this);
     this.startGame = this.startGame.bind(this);
   }
@@ -25,6 +25,9 @@ class Timer extends Component {
 
   moveTheBall(event) {
     let { x, y } = this.state;
+    if (!this.state.isStarted) {
+      return;
+    }
     if (event.key === "ArrowDown" || event.keyCode === 40) {
       this.setState({ y: y + 5 });
     } else if (event.key === "ArrowUp" || event.keyCode === 38) {
@@ -37,6 +40,7 @@ class Timer extends Component {
   }
 
   startGame() {
+    this.setState({ isStarted: true });
     this.tid = setInterval(() => {
       let t = this.state.time;
       this.setState({ time: t + 1 });
