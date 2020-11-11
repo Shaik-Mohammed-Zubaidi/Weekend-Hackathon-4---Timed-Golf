@@ -12,16 +12,19 @@ class Timer extends Component {
   componentDidMount() {
     document.addEventListener("keydown", this.moveTheBall, false);
   }
+  componentDidUpdate() {
+    if (this.state.x === 250 && this.state.y === 250) {
+      clearInterval(this.tid);
+      document.removeEventListener("keydown", this.moveTheBall);
+    }
+  }
   componentWillUnmount() {
     document.removeEventListener("keydown", this.moveTheBall);
     clearInterval(this.tid);
   }
 
   moveTheBall(event) {
-    let { x, y, time } = this.state;
-    if (time === 0) {
-      return;
-    }
+    let { x, y } = this.state;
     if (event.key === "ArrowDown" || event.keyCode === 40) {
       this.setState({ y: y + 5 });
     } else if (event.key === "ArrowUp" || event.keyCode === 38) {
@@ -30,10 +33,6 @@ class Timer extends Component {
       this.setState({ x: x + 5 });
     } else if (event.key === "ArrowLeft" || event.keyCode === 37) {
       this.setState({ x: x - 5 });
-    }
-    if (this.state.x === 250 && this.state.y === 250) {
-      clearInterval(this.tid);
-      document.removeEventListener("keydown", this.moveTheBall);
     }
   }
 
